@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import axios from "axios";
+const API = import.meta.env.VITE_API_URL;
 
 const Modal = ({ onClose,onFetch }) => {
     const titleRef = useRef(null);
@@ -38,7 +39,7 @@ const Modal = ({ onClose,onFetch }) => {
 
 
             await axios.post(
-                "http://localhost:3000/api/todos",
+                `${API}/api/todos`,
                 payload,
                 {
                     headers: {

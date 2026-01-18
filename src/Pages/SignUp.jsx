@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+const API = import.meta.env.VITE_API_URL;
 
 const Signup = () => {
   const nameRef = useRef(null);
@@ -25,7 +26,7 @@ const Signup = () => {
         password: passRef.current.value
       };
 
-      await axios.post("http://localhost:3000/api/signup", payload);
+      await axios.post(`${API}/api/signup`, payload);
 
       navigate("/signin");
     } catch (err) {

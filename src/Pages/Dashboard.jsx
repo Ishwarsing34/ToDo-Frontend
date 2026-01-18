@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Modal from "./Modal";
+const API = import.meta.env.VITE_API_URL;
+
+
 
 const DashBoard = () => {
   const navigate = useNavigate();
@@ -29,7 +32,8 @@ const DashBoard = () => {
       }
 
       const res = await axios.get(
-        "http://localhost:3000/api/todos",
+    
+       `${API}/api/todos`,
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -53,7 +57,7 @@ const DashBoard = () => {
   const handleDelete =async (todoId) => {
     console.log("Delete todo with id:", todoId);
 
-     await axios.delete(`http://localhost:3000/api/todos/${todoId}`,
+     await axios.delete(`${API}/api/todos/${todoId}`,
         {
             headers:{
                 Authorization: `Bearer ${token}`
